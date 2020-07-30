@@ -17,9 +17,10 @@ def get_content(html):
     soup = BeautifulSoup(html, 'html.parser')
     items = soup.find('td', class_='korzina_shop_price')
     # trim the class and print the price
-    moloko = str(items)
-    price = moloko[38:43]
-    print(price)
+    print(items.text)
+    #moloko = str(items)
+    #price = moloko[38:43]
+    #print(price)
 
 # If error check and get full html tree
 def parse():
