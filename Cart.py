@@ -1,9 +1,7 @@
 import gspread as gc
 from oauth2client.service_account import ServiceAccountCredentials
 
-i = 'Oh, hi Mark!'
-
-__name__ = 'Hookers.py'
+__name__ = 'Hookers.py'  # The only thing to change for tests
 
 
 def push_value():
@@ -20,12 +18,14 @@ def push_value():
 
     spreadsheet = client.open('Inflation_project')  # this has to match the credentials
 
-    worksheet = spreadsheet.worksheet("REF_INDEX")
+    # So here is the idea, when the function is called externally __name__ = filename (.py extension?)
+    # That's why on every run the function will address the correct column via addressing REF_INDEX
+    worksheet = spreadsheet.worksheet("REF_INDEX")  # Opus magnum of my Excel skills
     python_file = worksheet.find(__name__)
-    python_file = str(python_file)[6:9]
+    python_file = str(python_file)[6:9]  # We need row only, 2 in my example
 
-    REF_R_coordinates = python_file + str(ref_row)  # R2C3
-    REF_C_coordinates = python_file + str(ref_col)  # R2C4
+    REF_R_coordinates = python_file + str(ref_row)  # R2C3 R%Row_number% in the sheet
+    REF_C_coordinates = python_file + str(ref_col)  # R2C4 C%Col_number% in the sheet
 
     Rr = str(REF_R_coordinates[1:4:2])  # 23
     R1 = Rr[0:1]  # 2
@@ -34,11 +34,15 @@ def push_value():
     C1 = Cc[0:1]  # 2
     C2 = Cc[1:2]  # 4
 
+    # Okay so we have [2, 3] for Y value that is a numeral
+    # And [2, 4] For X value, which is a letter
     y = worksheet.cell(R1, R2).value
     x = worksheet.cell(C1, C2).value
 
+    # I have a pen, I have an apple -> Uh! Apple pen!
     next_cell = x + y
     print(next_cell)
 
 
 push_value()
+
