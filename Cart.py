@@ -1,7 +1,9 @@
 import gspread as gc
 from oauth2client.service_account import ServiceAccountCredentials
 
-__name__ = 'Hookers.py'  # The only thing to change for tests
+__name__ = 'AI-95.py'  # The only thing to change for tests
+
+i = 1488
 
 
 def push_value():
@@ -38,10 +40,13 @@ def push_value():
     # And [2, 4] For X value, which is a letter
     x = worksheet.cell(C1, C2).value  # Pen
     y = worksheet.cell(R1, R2).value  # Apple
-    
+
     # I have a pen, I have an apple -> Uh! Apple pen!
     next_cell = x + y
-    print(next_cell)
+
+    worksheet_2 = spreadsheet.worksheet("RAW_DATA")
+    worksheet_2.update(next_cell, i)
 
 
 push_value()
+
