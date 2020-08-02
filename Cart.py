@@ -36,13 +36,12 @@ def push_value():
 
     # Okay so we have [2, 3] for Y value that is a numeral
     # And [2, 4] For X value, which is a letter
-    y = worksheet.cell(R1, R2).value
-    x = worksheet.cell(C1, C2).value
-
+    x = worksheet.cell(C1, C2).value  # Pen
+    y = worksheet.cell(R1, R2).value  # Apple
+    
     # I have a pen, I have an apple -> Uh! Apple pen!
     next_cell = x + y
     print(next_cell)
 
 
 push_value()
-
