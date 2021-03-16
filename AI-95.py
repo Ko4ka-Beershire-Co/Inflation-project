@@ -6,7 +6,7 @@ HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:71.0) Gec
 HOST = 'https://fuelprices.ru'
 
 
-def get_html(url, params=None):
+def get_html(url, params=None, HEADERS):
     r = requests.get(url, headers=HEADERS, params=params)
     return r
 
