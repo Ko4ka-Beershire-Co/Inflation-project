@@ -42,6 +42,7 @@ Vacation	0.048	0.1
 --Household
 ---Ariel washing powder
 ---Sponges
+--Alchohol
 --Toiletries
 ---Shampoo
 ---Perfume
