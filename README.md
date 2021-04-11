@@ -72,4 +72,8 @@ Vacation	0.048	0.1
 --Travel tickets
 --USD
 
+# Features
+->Check if the date matches (make sure it is once per day)
+->Parcer status Gsheets and Python
+->Transport from private to sheet to public Dashboard
 
