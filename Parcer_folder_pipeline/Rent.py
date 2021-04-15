@@ -2,14 +2,14 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-URL = 'https://moskva.naydidom.com/tseny/adtype-arenda'
-HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+
+def parser():
+  
+    URL = 'https://moskva.naydidom.com/tseny/adtype-arenda'
+    HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
-item_1 = 'table'
-item_2 = 'table table-striped table-bordered table-condensed'
-
-
-def parser(URL, HEADERS, item_1, item_2):
+    item_1 = 'table'
+    item_2 = 'table table-striped table-bordered table-condensed'
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
@@ -37,4 +37,4 @@ def parser(URL, HEADERS, item_1, item_2):
 
 
 if __name__ == "__main__":
-    parser(URL, HEADERS, item_1, item_2)
+    parser()
