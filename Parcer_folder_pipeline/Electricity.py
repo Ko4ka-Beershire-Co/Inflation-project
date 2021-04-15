@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = 'https://energovopros.ru/spravochnik/elektrosnabzhenie/tarify-na-elektroenergiju/moskva/29449/'
-HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
-item_1 = 'td'
-item_2 = 'xl6929254'
 
+def parser():
+    URL = 'https://energovopros.ru/spravochnik/elektrosnabzhenie/tarify-na-elektroenergiju/moskva/29449/'
+    HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                             'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
+    item_1 = 'td'
+    item_2 = 'xl6929254'
 
-def parser(URL, HEADERS, item_1, item_2):
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
@@ -34,5 +34,4 @@ def parser(URL, HEADERS, item_1, item_2):
 
 
 if __name__ == "__main__":
-
-    parser(URL, HEADERS, item_1, item_2)
+    parser()
