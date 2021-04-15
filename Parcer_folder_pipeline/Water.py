@@ -13,7 +13,7 @@ def parser():
     item_2 = 'data'
     # Request to send
     def get_html(url, params=None):
-        r = requests.get(url, headers=HEADERS, params=params)
+        r = requests.get(url, verify=False, headers=HEADERS, params=params)
         return r
 
     # Parse html tree and return class containing the price
