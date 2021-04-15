@@ -24,7 +24,7 @@ def parser():
         # Some funny stuff for shitty whitespaces
         item_list = []
         for i in item:
-            j = str(i)[:3]+str(i)[-3:]
+            j = str(i)[:2]+str(i)[-3:]
             item_list.append(j)
 
         # count average
