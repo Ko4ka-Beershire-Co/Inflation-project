@@ -42,7 +42,8 @@ def push_value(name, i):
 
     worksheet_2 = spreadsheet.worksheet("RAW_DATA")
     worksheet_2.update(next_cell, i)
+    
+if __name__ == "__main__":
 
-
-push_value()
+    push_value()
 
