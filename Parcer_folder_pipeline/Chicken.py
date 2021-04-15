@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = 'https://lenta.com/product/pf-kurinoe-file-s-grudki-ohl-ves-rossiya-011991/'
-HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
-item_1 = 'span'
-item_2 = 'sku-price__integer'
-
-
 def parser(URL, HEADERS, item_1, item_2):
+  
+    URL = 'https://lenta.com/product/pf-kurinoe-file-s-grudki-ohl-ves-rossiya-011991/'
+    HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
+    item_1 = 'span'
+    item_2 = 'sku-price__integer'
+    
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
