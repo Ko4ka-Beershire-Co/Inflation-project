@@ -2,7 +2,7 @@ import requests
 import re
 from bs4 import BeautifulSoup
 
-def parser(URL, HEADERS, item_1, item_2):
+def parser():
     URL = 'https://msk.etagi.com/analytics/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
