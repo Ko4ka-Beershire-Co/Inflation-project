@@ -1,12 +1,8 @@
 import gspread as gc
 from oauth2client.service_account import ServiceAccountCredentials
 
-__name__ = 'AI-95.py'  # The only thing to change for tests
 
-i = 1488
-
-
-def push_value():
+def push_value(name, i):
     ref_row = 3
     ref_col = 4
     # df to Google Sheet module ------ So this is a shitty version as it requires 2 cached files in the root directory
@@ -23,7 +19,7 @@ def push_value():
     # So here is the idea, when the function is called externally __name__ = filename (.py extension?)
     # That's why on every run the function will address the correct column via addressing REF_INDEX
     worksheet = spreadsheet.worksheet("REF_INDEX")  # Opus magnum of my Excel skills
-    python_file = worksheet.find(__name__)
+    python_file = worksheet.find(name)
     python_file = str(python_file)[6:9]  # We need row only, 2 in my example
 
     REF_R_coordinates = python_file + str(ref_row)  # R2C3 R%Row_number% in the sheet
