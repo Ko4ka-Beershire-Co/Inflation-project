@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def parser(URL, HEADERS, item_1, item_2):
+def parser():
   
     URL = 'https://lenta.com/product/pf-kurinoe-file-s-grudki-ohl-ves-rossiya-011991/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
