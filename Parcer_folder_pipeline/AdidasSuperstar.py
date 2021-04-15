@@ -35,4 +35,4 @@ def parser():
 
 if __name__ == "__main__":
 
-    print(parser(URL, HEADERS, item_1, item_2))
+    parser()
