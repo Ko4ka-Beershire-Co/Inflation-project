@@ -91,3 +91,6 @@ for k in parser_list[:-1]:  # -1 deletes _pycache_
     except:
         print('Error------|' + str(k))
         pass
+
+if __name__ == "__main__":
+    main()
