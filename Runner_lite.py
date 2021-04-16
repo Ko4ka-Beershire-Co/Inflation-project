@@ -76,6 +76,7 @@ for filename in os.listdir(parser_location):
 
 # Parse and push script
 for k in parser_list[:-1]:  # -1 deletes _pycache_
+    time.sleep(3)
     # from package import name as imported
     print(str(k) + '---|Running')
     package = "Parcer_folder_pipeline." + k[:-3]
@@ -85,10 +86,18 @@ for k in parser_list[:-1]:  # -1 deletes _pycache_
     imported = getattr(__import__(package, fromlist=[name]), name)
     # Make it a number
     try:
-        end_value = re.sub(r'\D', '', str(imported()), 0, re.MULTILINE)
-        push_value(str(k), int(end_value))
+        end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
+        push_value(str(k), float(end_value))
         print(str(k) + '---------|Success')
-        
+
+    # Some Chris Nolan Shit Happening Here
     except:
-        print(str(k) + '---------|Error')
-        pass
+
+        try:
+            push_value(str(k), float(imported()))
+            print(str(k) + '---------|Success|---------Under-"else_statement"')
+
+        except:
+
+            print(str(k) + '---------|Error')
+            pass
