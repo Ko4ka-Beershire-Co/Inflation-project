@@ -8,7 +8,7 @@ def parser():
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                          'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'dd'
-    item_2 = 'b-product-price__card old'
+    item_2 = 'b-product-price__card'
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
