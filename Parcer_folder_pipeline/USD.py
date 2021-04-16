@@ -4,12 +4,12 @@ import re
 
 
 def parser():
-  
     URL = 'https://www.cbr.ru/currency_base/daily/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
+                             'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'table'
     item_2 = 'data'
+
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
@@ -20,7 +20,8 @@ def parser():
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.find(item_1, class_=item_2)
         item = re.findall(r'Доллар США<\/td>\n<td>(\d{2,},\d{4})', str(items), re.MULTILINE)
-        return item[0]
+        item = re.sub(r',', '.', str(item[0]), 0, re.MULTILINE)
+        return item
 
     # If error check and get full html tree
     def parse():
@@ -36,5 +37,4 @@ def parser():
 
 
 if __name__ == "__main__":
-
     parser()
