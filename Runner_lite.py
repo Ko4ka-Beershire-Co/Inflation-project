@@ -14,8 +14,6 @@ import shutil
 import importlib
 import time
 
-
-
 parser_location = "C://Users/Alex/Desktop/Python/Inflation/Inflation-project-master/Parcer_folder_pipeline"
 parser_list = []
 k = 0
@@ -86,10 +84,10 @@ for k in parser_list[:-1]:  # -1 deletes _pycache_
     # Very blya complicated
     imported = getattr(__import__(package, fromlist=[name]), name)
     # Make it a number
-    end_value = re.sub(r'\D', '', str(imported()), 0, re.MULTILINE)
     try:
+        end_value = re.sub(r'\D', '', str(imported()), 0, re.MULTILINE)
         push_value(str(k), int(end_value))
 
-    except OSError:
-        print(str(k))
-        print('Error')
+    except:
+        print('Error------|' + str(k))
+        pass
