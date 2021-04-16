@@ -5,12 +5,12 @@ from bs4 import BeautifulSoup
 
 
 def parser():
-  
     URL = 'http://www.mosvodokanal.ru/forpeople/tariffs/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
+                             'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'table'
     item_2 = 'data'
+
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, verify=False, headers=HEADERS, params=params)
@@ -36,7 +36,8 @@ def parser():
         else:
             print('Чет не работает нихрена...')
             j = 'Error'
-        return j
+        item = re.sub(r',', '.', str(j), 0, re.MULTILINE)
+        return item
 
     return str(parse())
 
