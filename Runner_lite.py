@@ -87,10 +87,8 @@ for k in parser_list[:-1]:  # -1 deletes _pycache_
     try:
         end_value = re.sub(r'\D', '', str(imported()), 0, re.MULTILINE)
         push_value(str(k), int(end_value))
-
+        print(str(k) + '---------|Success')
+        
     except:
-        print('Error------|' + str(k))
+        print(str(k) + '---------|Error')
         pass
-
-if __name__ == "__main__":
-    main()
