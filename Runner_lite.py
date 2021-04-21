@@ -13,6 +13,7 @@ import os
 import shutil
 import importlib
 import time
+import datetime
 
 parser_location = "C://Users/Alex/Desktop/Python/Inflation/Inflation-project-master/Parcer_folder_pipeline"
 parser_list = []
@@ -87,13 +88,18 @@ def revolve():
         imported = getattr(__import__(package, fromlist=[name]), name)
         # Make it a number
         try:
-            end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
-            push_value(str(k), float(end_value))
-            print(str(k) + '---------|Success')
+            # If I want to parse date, or some other stuff, I don't want the RegEx
+            if k != 'Date.py':
+                end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
+                push_value(str(k), float(end_value))
+                print(str(k) + '---------|Success')
+            else:
+                push_value(str(k), imported())
+                print(str(k) + '---------|Success|---------|Ha-Za')
 
         # Some Chris Nolan Shit Happening Here
         except:
-            # JIC ReGex breaks smt
+            # JIC RegEx breaks smt
             try:
                 push_value(str(k), float(imported()))
                 print(str(k) + '---------|Success|---------Under-"else_statement"')
