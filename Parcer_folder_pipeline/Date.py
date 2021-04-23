@@ -3,7 +3,7 @@ import datetime
 
 def parser():
     i = datetime.date.today()
-    j = i.strftime('%m/%y')
+    j = i.strftime('%m/%d')
     return j
 
 
