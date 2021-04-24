@@ -1,3 +1,8 @@
+# TO DO:
+
+1) Fix str(date) bug
+2) Create Heroku Container
+
 # Inflation-project
 
 Private gspread for data-processing 
