@@ -1,6 +1,6 @@
 # TO DO:
 
-1) Fix str(date) bug
+1) Fix str(date) bug - LOL not a bug, but a feature
 2) Create Heroku Container
 
 # Inflation-project
