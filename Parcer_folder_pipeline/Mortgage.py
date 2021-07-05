@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
-
+import re
 
 def parser():
-  
-    URL = 'https://www.sravni.ru/ipoteka/top/'
+    URL = 'https://www.sravni.ru/ipoteka/refinansirovanie-ipoteki/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                         'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
+                             'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'span'
-    item_2 = 'c-pl-data__title--big'
+    item_2 = 'sc-1ev4px3-3 kYDNWt'
+
     # Request to send
     def get_html(url, params=None):
         r = requests.get(url, headers=HEADERS, params=params)
@@ -19,7 +19,8 @@ def parser():
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.findAll(item_1, class_=item_2)
         items = str(items[1])
-        return items[36:41]  # КААААААААААстыль
+        items = re.findall(r'(\d,\d\d)|(\d\d,\d\d)', items)
+        return items[0][0]  # omg
 
     # If error check and get full html tree
     def parse():
@@ -35,5 +36,4 @@ def parser():
 
 
 if __name__ == "__main__":
-
     parser()
