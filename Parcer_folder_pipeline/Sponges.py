@@ -1,13 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
+import re
 
 
 def parser():
-    URL = 'https://www.auchan.ru/product/gubka_dlya_mytya_10sht/'
+    URL = 'https://msk.metro-cc.ru/category/tovary-dlya-doma-dachi-sada/hozyajstvennye-tovary/sredstva-dlya-uborki' \
+          '/kuhonnye-qualita-bubble-effect-5-sht '
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'div'
-    item_2 = 'fullPricePDP css-1129a1l'
+    item_2 = 'price-card__price'
 
     # Request to send
     def get_html(url, params=None):
@@ -18,7 +20,8 @@ def parser():
     def get_content(html):
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.find(item_1, class_=item_2)
-        return items.text[0:6]
+        items = re.findall(r'<span itemprop="price">\n\s*(\d\d)', str(items))
+        return items[0]
 
     # If error check and get full html tree
     def parse():
@@ -30,7 +33,7 @@ def parser():
             j = 'Error'
         return j
 
-    return round(float(parse()) * 5.27)  # Replacement fix
+    return round(float(parse()) * 1.74)  # Replacement fix
 
 
 if __name__ == "__main__":
