@@ -1,3 +1,7 @@
+# The Website:
+
+https://beershire.ru/inflation-monitor/
+
 # TO DO:
 
 1) Fix str(date) bug - LOL not a bug, but a feature
