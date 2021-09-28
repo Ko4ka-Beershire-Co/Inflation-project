@@ -15,7 +15,7 @@ import importlib
 import time
 import datetime
 
-parser_location = "C://Users/Alex/Desktop/Python/Inflation/Inflation-project-master/Parcer_folder_pipeline"
+parser_location = "C://Users/Alex/PycharmProjects/Inflation-project/Parcer_folder_pipeline"
 parser_list = []
 k = 0
 
@@ -78,36 +78,43 @@ def revolve():
 
     # Parse and push script
     for k in parser_list[:-1]:  # -1 deletes _pycache_
-        time.sleep(3)
-        # from package import name as imported
-        print(str(k) + '---|Running')
-        package = "Parcer_folder_pipeline." + k[:-3]
-        name = "parser"
 
-        # Very blya complicated
-        imported = getattr(__import__(package, fromlist=[name]), name)
-        # Make it a number
-        try:
-            # If I want to parse date, or some other stuff, I don't want the RegEx
-            if k != 'Date.py':
-                end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
-                push_value(str(k), float(end_value))
-                print(str(k) + '---------|Success')
-            else:
-                push_value(str(k), imported())
-                print(str(k) + '---------|Success|---------|Ha-Za')
+        # exception for readme
+        if k == "readme.md":
 
-        # Some Chris Nolan Shit Happening Here
-        except:
-            # JIC RegEx breaks smt
+            return
+
+        else:
+            time.sleep(3)
+            # from package import name as imported
+            print(str(k) + '---|Running')
+            package = "Parcer_folder_pipeline." + k[:-3]
+            name = "parser"
+
+            # Very blya complicated
+            imported = getattr(__import__(package, fromlist=[name]), name)
+            # Make it a number
             try:
-                push_value(str(k), float(imported()))
-                print(str(k) + '---------|Success|---------Under-"else_statement"')
+                # If I want to parse date, or some other stuff, I don't want the RegEx
+                if k != 'Date.py':
+                    end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
+                    push_value(str(k), float(end_value))
+                    print(str(k) + '---------|Success')
+                else:
+                    push_value(str(k), imported())
+                    print(str(k) + '---------|Success|---------|Ha-Za')
 
+            # Some Chris Nolan Shit Happening Here
             except:
+                # JIC RegEx breaks smt
+                try:
+                    push_value(str(k), float(imported()))
+                    print(str(k) + '---------|Success|---------Under-"else_statement"')
 
-                print(str(k) + '---------|Error')
-                pass
+                except:
+
+                    print(str(k) + '---------|Error')
+                    pass
 
 
 if __name__ == '__main__':
