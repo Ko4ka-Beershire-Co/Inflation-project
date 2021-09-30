@@ -14,6 +14,7 @@ import shutil
 import importlib
 import time
 import datetime
+from termcolor import colored
 
 parser_location = "C://Users/Alex/PycharmProjects/Inflation-project/Parcer_folder_pipeline"
 parser_list = []
@@ -81,13 +82,12 @@ def revolve():
 
         # exception for readme
         if k == "readme.md":
-
-            return
+            pass  # pass = skip
 
         else:
             time.sleep(3)
             # from package import name as imported
-            print(str(k) + '---|Running')
+            print(colored(str(k) + '---|Running', 'green'))
             package = "Parcer_folder_pipeline." + k[:-3]
             name = "parser"
 
@@ -99,21 +99,25 @@ def revolve():
                 if k != 'Date.py':
                     end_value = re.sub(r'[^\d\.]', '', str(imported()), 0, re.MULTILINE)
                     push_value(str(k), float(end_value))
-                    print(str(k) + '---------|Success')
+                    print(colored(str(k) + '---------|Success', "green"))
+
                 else:
                     push_value(str(k), imported())
-                    print(str(k) + '---------|Success|---------|Ha-Za')
+                    print(colored(str(k) + '---------|Success', "green"))
 
             # Some Chris Nolan Shit Happening Here
             except:
                 # JIC RegEx breaks smt
                 try:
                     push_value(str(k), float(imported()))
-                    print(str(k) + '---------|Success|---------Under-"else_statement"')
+                    print(colored(str(k) + '---------|Success|---------Under-"else_statement"', "yellow"))
 
                 except:
 
-                    print(str(k) + '---------|Error')
+                    print(colored(str(k) + '---------|Error', 'red'))
+                    # If Error - quick fix
+                    # Take previous value from the table and copy-paste it with a highlight
+
                     pass
 
 
