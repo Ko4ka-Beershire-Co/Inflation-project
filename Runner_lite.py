@@ -21,7 +21,7 @@ parser_list = []
 k = 0
 
 
-def get_previous_value(name) -> object:
+def get_previous_value(name):
     ref_row = 3
     ref_col = 4
     # df to Google Sheet module ------ So this is a shitty version as it requires 2 cached files in the root directory
