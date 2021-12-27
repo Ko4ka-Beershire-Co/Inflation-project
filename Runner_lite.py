@@ -150,7 +150,7 @@ def revolve():
             pass  # pass = skip
 
         else:
-            time.sleep(5)
+            time.sleep(10)
             # from package import name as imported
             print(colored(str(k) + '---|Running', 'yellow'))
             package = "Parcer_folder_pipeline." + k[:-3]
