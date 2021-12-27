@@ -16,7 +16,7 @@ import time
 import datetime
 from termcolor import colored
 
-parser_location = "C://Users/Alex/PycharmProjects/Inflation-project/Parcer_folder_pipeline"
+parser_location = "C://Users/Rusge/PycharmProjects/Inflation-project/Parser_folder"
 parser_list = []
 k = 0
 
@@ -150,7 +150,7 @@ def revolve():
             pass  # pass = skip
 
         else:
-            time.sleep(2)
+            time.sleep(5)
             # from package import name as imported
             print(colored(str(k) + '---|Running', 'yellow'))
             package = "Parcer_folder_pipeline." + k[:-3]
