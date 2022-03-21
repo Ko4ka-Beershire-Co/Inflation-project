@@ -4,7 +4,7 @@ import re
 
 
 def parser():
-    URL = 'https://www.sravni.ru/ipoteka/refinansirovanie-ipoteki/'
+    URL = 'https://www.sravni.ru/ipoteka/zhile-na-vtorichnom-rynke/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
     item_1 = 'span'
@@ -20,8 +20,17 @@ def parser():
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.findAll(item_1, class_=item_2)
         # items = str(items[1])
-        items = re.findall(r'(\d,\d\d)|(\d\d,\d\d)|\d,\d\d', str(items))
-        return items[1][0]  # omg
+        # print(items)
+        items = re.findall(r'(\d,\d\d)|(\d\d,\d\d)|\d,\d\d', str(items[0]))
+        # print(items)
+        if len(items[0][1]) >= 5:
+            output = str(items[0][1][0:2]) + str(items[0][1][-2:])
+            output = int(output)
+
+            return output
+
+        else:
+            pass
 
     # If error check and get full html tree
     def parse():
