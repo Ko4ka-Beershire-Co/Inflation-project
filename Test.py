@@ -4,11 +4,11 @@ from bs4 import BeautifulSoup
 
 
 def parser():
-    URL = 'https://msk.etagi.com/analytics/'
+    URL = 'https://energovopros.ru/spravochnik/elektrosnabzhenie/tarify-na-elektroenergiju/moskva/29449/'
     HEADERS = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.105 Safari/537.36', 'accept': '*/*'}  # Real params
-    item_1 = 'span'
-    item_2 = '_1s0Jo'
+    item_1 = 'div'
+    item_2 = 'articles-list items_scope'
 
     # Request to send
     def get_html(url, params=None):
@@ -19,9 +19,9 @@ def parser():
     def get_content(html):
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.find(item_1, class_=item_2)
-        prices = re.findall('<span class="_1s0Jo">(.*?) (.*?)<!-- -->', str(items), re.MULTILINE)
-        output = int(str(prices[0][0] + str(prices[0][1])))
-        return output  # Ср. цена м^2 в новостройке Т-1
+        canvas = re.findall(r'<p>Одноставочный тариф на электроэнергию</p>\n<ul>\n<li><strong>(.*?) руб</strong>'
+                            r' за 1 кВт.ч</li>\n</ul>', str(items), re.MULTILINE)
+        return canvas[0]  # Цена по однозонному тарифу
 
     # If error check and get full html tree
     def parse():
@@ -37,4 +37,4 @@ def parser():
 
 
 if __name__ == "__main__":
-    parser()
+    print(parser())
