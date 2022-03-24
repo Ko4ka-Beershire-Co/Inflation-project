@@ -19,7 +19,7 @@ def parser():
     def get_content(html):
         soup = BeautifulSoup(html, 'html.parser')
         items = soup.find(item_1, class_=item_2)
-        item = re.findall(r'<td>(\d,\d\d)<\/td>', str(items), re.MULTILINE)
+        item = re.findall(r'<td>(\d\d,\d\d)<\/td>', str(items), re.MULTILINE)
         item = re.sub(r',', '.', str(item[0]), 0, re.MULTILINE)
         return item
 
